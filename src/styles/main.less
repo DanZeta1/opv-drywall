@@ -1,0 +1,874 @@
+// =============================================
+// OPV DRYWALL - Estilos principales en LESS
+// =============================================
+
+// ----- Variables -----
+@principal:       #9fa7b1;
+@texto:           #222222;
+@texto-claro:     #555555;
+@acento:          #000000;
+@fondo-seccion:   #9fa7b1;
+@blanco:          #ffffff;
+
+// ----- Mixins -----
+.card-shadow() {
+  box-shadow: 0 12px 35px rgba(0,0,0,0.09);
+  border-radius: 18px;
+  background: @blanco;
+  transition: all .3s;
+  &:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+}
+
+.transition(@prop: all, @dur: .3s) {
+  transition: @prop @dur;
+}
+
+// ----- Reset -----
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: @texto;
+  line-height: 1.7;
+  background: @principal;
+}
+
+a { text-decoration: none; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// =============================================
+// HEADER / NAVBAR
+// =============================================
+header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: @blanco;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+
+.navbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 58px;
+  max-width: 240px;
+  object-fit: contain;
+  .transition(transform);
+  &:hover { transform: scale(1.05); }
+}
+
+nav {
+  ul {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  a {
+    color: @texto;
+    font-weight: 500;
+    font-size: 1rem;
+    white-space: nowrap;
+    padding: 8px 0;
+    .transition();
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background: @acento;
+      .transition();
+    }
+    &:hover, &:focus {
+      color: @acento;
+      &::after { width: 100%; left: 0; }
+    }
+  }
+}
+
+// =============================================
+// CONTENEDOR GENERAL
+// =============================================
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+section { padding: 110px 20px; }
+
+h2 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: @texto;
+}
+
+section p.lead {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 65px;
+  color: @texto-claro;
+  font-size: 1.15rem;
+}
+
+// =============================================
+// HERO
+// =============================================
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+              url('../assets/logo_2.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: @principal;
+
+  &-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    h1 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+    p {
+      font-size: 1.4rem;
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  background: @blanco;
+  color: #000;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  .transition();
+  &:hover {
+    background: @acento;
+    color: @blanco;
+    transform: translateY(-4px);
+  }
+}
+
+// =============================================
+// MISIÓN / VISIÓN / VALORES (index.html)
+// =============================================
+.about-us { padding: 110px 20px; }
+
+.mission-vision-card {
+  background: @blanco;
+  padding: 45px;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.09);
+  margin-bottom: 60px;
+  text-align: center;
+  h3 { font-size: 2.3rem; margin-bottom: 25px; }
+}
+
+.values-title {
+  font-size: 2.6rem;
+  text-align: center;
+  margin: 90px 0 55px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
+}
+
+.value-card {
+  background: @blanco;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  position: relative;
+
+  h4 {
+    padding-top: 15px;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+  }
+}
+
+.value-number {
+  position: absolute;
+  top: -18px;
+  left: 22px;
+  background: @acento;
+  color: @blanco;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+// =============================================
+// ACERCA DE NOSOTROS
+// =============================================
+.hero_acerca,
+.hero2_acerca {
+  width: 100%;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+
+  h2 { color: #f2f7f4; }
+}
+
+.hero_acerca       { background-image: url('../assets/imagen11.jpg'); }
+.hero2_acerca      { background-image: url('../assets/imagen5.jpg'); }
+
+.hero_acerca-content,
+.hero2_acerca-content {
+  text-align: center;
+  color: @blanco;
+  background: rgba(8,8,8,0.4);
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+.cuerpo {
+  padding: 40px 5%;
+  background: @blanco;
+
+  h1 { text-align: center; margin: 30px 0; }
+  p  { text-align: justify; line-height: 1.6; margin-bottom: 16px; }
+}
+
+.fila {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+
+  img {
+    width: 440px;
+    height: auto;
+    border-radius: 5px;
+  }
+}
+
+.texto { flex: 1; }
+
+// =============================================
+// GALERÍA
+// =============================================
+.gallery { padding: 5rem; }
+
+.grids {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  .rows {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rows [class*='cols'] {
+    flex-shrink: 0;
+    flex-grow: 0;
+    min-width: 0px;
+  }
+
+  .rows .cols { flex-basis: 100%; }
+}
+
+.pic {
+  width: 300px;
+  max-width: 300px;
+  margin: 20px;
+  border: 1px solid #eee;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.47);
+  overflow: hidden;
+  border-radius: 7px;
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+// =============================================
+// NUESTROS PROGRAMAS
+// =============================================
+body.body-np {
+  font-family: 'Roboto', sans-serif;
+  background: @principal;
+}
+
+.caja-np {
+  width: 100%;
+  height: 70vh;
+  position: relative;
+  overflow: hidden;
+  background: url('../assets/imagen1.jpg') top/cover no-repeat;
+  display: block;
+
+  h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin: 0;
+    font-size: 2.25rem;
+    color: black;
+    z-index: 1;
+  }
+}
+
+.t-contenedor { padding: 5rem 1rem; }
+.mb-4         { margin-bottom: 1rem; }
+
+.carta-holder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.carta {
+  width: 300px;
+  max-width: 300px;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.47);
+  overflow: hidden;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-top img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-middle {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px #ccc solid;
+  margin-bottom: 0.5rem;
+  flex-grow: 1;
+
+  strong {
+    display: block;
+    padding: 0.75rem 0.5rem;
+    margin-bottom: 0.5rem;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .c-descripcion {
+    padding: 0 0.5rem;
+    line-height: 1.5;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.card-bottom {
+  padding: 0.5rem;
+  text-align: right;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+
+  .row {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    column-gap: 1.25rem;
+    row-gap: 0.25rem;
+    justify-content: center;
+    align-items: stretch;
+
+    [class*='col-'] {
+      flex-shrink: 0;
+      flex-grow: 0;
+      min-width: 0px;
+    }
+  }
+}
+
+// col helpers — flex-basis por columna (1-12)
+.col-1  { flex-basis: 8.3333%; }
+.col-2  { flex-basis: 16.6667%; }
+.col-3  { flex-basis: 25%; }
+.col-4  { flex-basis: 33.3333%; }
+.col-5  { flex-basis: 41.6667%; }
+.col-6  { flex-basis: 50%; }
+.col-7  { flex-basis: 58.3333%; }
+.col-8  { flex-basis: 66.6667%; }
+.col-9  { flex-basis: 75%; }
+.col-10 { flex-basis: 83.3333%; }
+.col-11 { flex-basis: 91.6667%; }
+.col-12 { flex-basis: 100%; }
+
+// =============================================
+// CONTACTO
+// =============================================
+main.yamanos {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  background: @blanco;
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    margin-bottom: 30px;
+
+    > div {
+      background: @blanco;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      .transition(all, .3s);
+      border: 4px solid #f0f0f0;
+    }
+    &:hover > div {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    &:nth-child(even) > div { flex-direction: row-reverse; }
+
+    img { width: 120px; height: 120px; object-fit: contain; flex-shrink: 0; }
+    p   { font-size: 1.1rem; line-height: 1.6; margin-bottom: 15px; color: #555; text-align: center; flex: 1; }
+    span {
+      display: inline-block;
+      background: #333;
+      color: @blanco;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: bold;
+      .transition();
+    }
+    &:hover span { background: #555; }
+
+    &.face    > div { border-color: #1877f2; }
+    &.face:hover > div { border-color: #0d5dba; }
+    &.gmail   > div { border-color: #EA4335; }
+    &.gmail:hover > div { border-color: #c5322a; }
+    &.tikitaka > div { border-color: #000000; }
+    &.tikitaka:hover > div { border-color: #333333; }
+    &.telef   > div { border-color: #25D366; }
+    &.telef:hover > div { border-color: #1da851; }
+    &.trab    > div { border-color: #FF6B6B; }
+    &.trab:hover > div { border-color: #ee5253; }
+  }
+}
+
+// =============================================
+// PREGUNTAS FRECUENTES
+// =============================================
+.faq-contenedor {
+  width: 90%;
+  max-width: 700px;
+  margin: 30px auto;
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.faq-wrapper { display: flex; flex-direction: column; }
+
+.faq-item {
+  background: @blanco;
+  border: 1px solid #dcdcdc;
+  border-radius: 0;
+  overflow: hidden;
+  margin: 0;
+
+  &:first-child { border-top-left-radius: 10px; border-top-right-radius: 10px; }
+  &:last-child  { border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
+}
+
+.faq-toggle { display: none; }
+
+.faq-question {
+  display: block;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  background: @blanco;
+  .transition(background);
+
+  &:hover { background: #f1f7ff; }
+
+  &::after {
+    content: "▼";
+    font-size: 14px;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+    .transition(transform);
+  }
+}
+
+.faq-toggle:checked + .faq-question::after { transform: rotate(180deg); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: #fafafa;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 15px;
+  margin-top: -1px;
+}
+
+.faq-toggle:checked ~ .faq-answer {
+  max-height: 300px;
+  padding: 15px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+// =============================================
+// POR QUÉ OPV DRYWALL
+// =============================================
+main.pirque {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 30px;
+  background: @blanco;
+
+  div {
+    margin-bottom: 45px;
+    padding: 25px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+
+  h2.por {
+    font-size: 1.6rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  p1.res {
+    display: block;
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.7;
+  }
+}
+
+// =============================================
+// TESTIMONIOS
+// =============================================
+.contenedor {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.tarjeta {
+  background: @blanco;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  border: 1px solid #ddd;
+
+  img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.info {
+  h3 { margin: 0; font-size: 18px; color: #333; }
+  p  { margin-top: 5px; line-height: 1.4; color: #555; }
+}
+
+// =============================================
+// TÉRMINOS Y CONDICIONES
+// =============================================
+.cuerpo_terminos_codiciones {
+  padding: 2rem 1rem;
+  max-width: 1000px;
+  margin: auto;
+
+  h1 {
+    font-size: 1.6rem;
+    color: #111;
+    margin: 2rem 0 1rem;
+    text-align: left;
+  }
+  p {
+    margin-bottom: 1rem;
+    text-align: justify;
+    font-size: 1rem;
+    color: #333;
+  }
+}
+
+// =============================================
+// FORMULARIO DE REGISTRO
+// =============================================
+body.body-reg {
+  font-family: 'Poppins', sans-serif;
+  color: @texto;
+  line-height: 1.7;
+  background: @principal;
+  min-height: 100vh;
+}
+
+.main-reg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  padding: 40px 20px;
+
+  h2 { text-align: center; }
+
+  .form-container {
+    background-color: @blanco;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 300px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label { margin-bottom: 5px; font-weight: bold; }
+
+  input {
+    margin-bottom: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 10px;
+    display: none;
+  }
+
+  button {
+    padding: 10px;
+    background-color: #007bff;
+    color: @blanco;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    &:hover { background-color: #0056b3; }
+  }
+}
+
+// =============================================
+// FOOTER
+// =============================================
+footer {
+  background: #000;
+  color: #ccc;
+  padding: 90px 20px 50px;
+  text-align: center;
+}
+
+.footer-links {
+  margin-bottom: 1rem;
+  a {
+    color: #ccc;
+    margin: 0 20px;
+    font-size: 1rem;
+    .transition(color);
+    &:hover { color: @blanco; }
+  }
+}
+
+.social {
+  margin: 50px 0;
+  a {
+    font-size: 2rem;
+    margin: 0 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: @blanco;
+    .transition();
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+    }
+    &:nth-child(1):hover { background: #1877f2; }
+    &:nth-child(2):hover { background: linear-gradient(45deg, #ff0050, #000); }
+    &:nth-child(3):hover { background: #d63031; }
+
+    i { display: none; }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      pointer-events: none;
+      .transition(transform);
+    }
+    &:hover .icon { transform: scale(1.15); }
+  }
+}
+
+// =============================================
+// RESPONSIVE
+// =============================================
+@media (max-width: 992px) {
+  nav ul { gap: 20px; font-size: 0.95rem; }
+
+  .fila {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    img { width: 80%; max-width: 400px; }
+    .texto { text-align: justify; width: 90%; }
+  }
+
+  .hero_acerca, .hero2_acerca {
+    height: 300px;
+    justify-content: center;
+    text-align: center;
+    > div { max-width: 90%; }
+    h2 { font-size: 1.4rem; }
+  }
+
+  .grids .rows .cols { flex-basis: calc(100% / 12 * 6); }
+}
+
+@media (max-width: 768px) {
+  .navbar { flex-direction: column; padding: 15px 20px; }
+  .logo   { margin-bottom: 15px; }
+  nav ul  { justify-content: center; gap: 25px; }
+
+  .contenedor { grid-template-columns: 1fr; }
+
+  main.yamanos a > div {
+    flex-direction: column !important;
+    padding: 20px;
+    text-align: center;
+  }
+  main.yamanos a img { width: 100px; height: 100px; }
+
+  main.pirque { padding: 40px 20px; }
+  main.pirque div { padding: 20px; margin-bottom: 35px; }
+  main.pirque h2.por { font-size: 1.4rem; }
+}
+
+@media (max-width: 600px) {
+  .hero_acerca, .hero2_acerca {
+    height: 250px;
+    padding: 10px;
+    h2 { font-size: 1.2rem; }
+  }
+  .fila img { width: 100%; }
+  .footer-links a { display: block; margin: 0.5rem 0; }
+}
+
+@media (max-width: 480px) {
+  .tarjeta {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    img { width: 70px; height: 70px; margin-bottom: 10px; }
+    .info h3 { font-size: 16px; }
+    .info p  { font-size: 14px; }
+  }
+  .faq-question { font-size: 16px; padding: 12px; }
+}
+
+@media (min-width: 720px) {
+  .grids .rows .cols { flex-basis: calc(100% / 12 * 6); }
+  .col-m-4 { flex-basis: calc(100% / 12 * 4); }
+  .col-m-6 { flex-basis: calc(100% / 12 * 6); }
+}
+
+@media (min-width: 1024px) {
+  .grids .rows .cols { flex-basis: calc(100% / 12 * 4); }
+  .col-l-4 { flex-basis: calc(100% / 12 * 4); }
+}
+
+@media (min-width: 1300px) {
+  .grids .rows .cols { flex-basis: calc(100% / 12 * 3); }
+}
