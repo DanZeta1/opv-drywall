@@ -3,27 +3,30 @@ import { resolve } from 'path'
 import handlebars from 'vite-plugin-handlebars'
 
 export default defineConfig({
-  // Cambia 'opv-drywall' por el nombre real de tu repositorio en GitHub
   base: '/opv-drywall/',
   plugins: [
     handlebars({
       partialDirectory: resolve(__dirname, 'src/partials'),
     }),
   ],
-
   build: {
     outDir: 'dist',
     rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+      },
       input: {
-        main:           resolve(__dirname, 'index.html'),
-        acercaDe:       resolve(__dirname, 'src/pages/acercaDe.html'),
-        galeria:        resolve(__dirname, 'src/pages/galeria.html'),
+        main:                resolve(__dirname, 'index.html'),
+        acercaDe:            resolve(__dirname, 'src/pages/acercaDe.html'),
+        galeria:             resolve(__dirname, 'src/pages/galeria.html'),
         preguntasFrecuentes: resolve(__dirname, 'src/pages/preguntasFrecuentes.html'),
         nuestrosProgramas:   resolve(__dirname, 'src/pages/nuestrosProgramas.html'),
-        porqueOpv:      resolve(__dirname, 'src/pages/porqueOpv.html'),
-        testimonios:    resolve(__dirname, 'src/pages/testimonios.html'),
-        formRegistro:   resolve(__dirname, 'src/pages/formRegistro.html'),
-        contactenos:    resolve(__dirname, 'src/pages/contactenos.html'),
+        porqueOpv:           resolve(__dirname, 'src/pages/porqueOpv.html'),
+        testimonios:         resolve(__dirname, 'src/pages/testimonios.html'),
+        formRegistro:        resolve(__dirname, 'src/pages/formRegistro.html'),
+        contactenos:         resolve(__dirname, 'src/pages/contactenos.html'),
         terminosYcondiciones: resolve(__dirname, 'src/pages/terminosYcondiciones.html'),
       }
     }
